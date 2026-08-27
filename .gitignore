@@ -1,0 +1,19 @@
+﻿# Build dirs
+build/
+build.log
+
+# VS / CMake
+CMakeCache.txt
+CMakeFiles/
+*.vcxproj.user
+*.suo
+*.user
+.vs/
+
+# Binaries (keep none in source)
+*.obj
+*.pdb
+
+# OS
+Thumbs.db
+Desktop.ini
