@@ -1,19 +1,7 @@
-﻿# Build dirs
+node_modules/
+.wings-memory/
+.env
+*.log
+dist/
 build/
-build.log
-
-# VS / CMake
-CMakeCache.txt
-CMakeFiles/
-*.vcxproj.user
-*.suo
-*.user
-.vs/
-
-# Binaries (keep none in source)
-*.obj
-*.pdb
-
-# OS
-Thumbs.db
-Desktop.ini
+.temp/
