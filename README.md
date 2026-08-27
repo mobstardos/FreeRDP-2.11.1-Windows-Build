@@ -1,30 +1,42 @@
-# FreeRDP: A Remote Desktop Protocol Implementation
+# FreeRDP 2.11.1 — Windows Build (x64)
 
-FreeRDP is a free implementation of the Remote Desktop Protocol (RDP), released under the Apache license.
-Enjoy the freedom of using your software wherever you want, the way you want it, in a world where
-interoperability can finally liberate your computing experience.
+Prebuilt **FreeRDP 2.11.1** binaries for Windows, built from source with MSVC.
 
-## Resources
+## What's inside
 
-Project website: https://www.freerdp.com/  
-Issue tracker: https://github.com/FreeRDP/FreeRDP/issues  
-Sources: https://github.com/FreeRDP/FreeRDP/  
-Downloads: https://pub.freerdp.com/releases/  
-Wiki: https://github.com/FreeRDP/FreeRDP/wiki  
-API documentation: https://pub.freerdp.com/api/  
+- `wfreerdp.exe` — RDP client (GUI)
+- `wfreerdp-server.exe` — RDP server / shadow
+- `freerdp-shadow-cli.exe` — shadow session tool
+- `freerdp-proxy.exe` — RDP proxy
+- `sfreerdp-server.exe` — sample server
+- Channel plugins (`*client.dll`), core libs, bundled **OpenSSL 1.1.1** and **MSVC 143 CRT**
 
-IRC channel: #freerdp @ irc.freenode.net  
-Mailing list: https://lists.sourceforge.net/lists/listinfo/freerdp-devel
+## Download
 
-## Microsoft Open Specifications
+Grab the prebuilt archive from the
+[Releases](https://github.com/mobstardos/FreeRDP-2.11.1-Windows-Build/releases) page:
+`FreeRDP-2.11.1-win64.zip`. Just unzip and run — no installer needed.
 
-Information regarding the Microsoft Open Specifications can be found at:
-http://www.microsoft.com/openspecifications/
+## Usage
 
-A list of reference documentation is maintained here:
-https://github.com/FreeRDP/FreeRDP/wiki/Reference-Documentation
+```
+wfreerdp.exe /v:host:3389 /u:user /p:password
+```
 
-## Compilation
+Use the included `connect.bat`:
 
-Instructions on how to get started compiling FreeRDP can be found on the wiki:
-https://github.com/FreeRDP/FreeRDP/wiki/Compilation
+```
+connect.bat 192.168.1.100:3389 JohnDoe P@ssw0rd
+```
+
+Double-clicking a `.rdp` file also launches `wfreerdp.exe`.
+
+## Build details
+
+- CMake 3.31 + Visual Studio 2022 Build Tools (MSVC 14.44), Windows SDK 10.0.26100
+- `BUILD_SHARED_LIBS=ON`, `BUILTIN_CHANNELS=OFF`, SSE2/NEON disabled
+- OpenSSL from the bundled PostgreSQL distribution
+- Targets Windows 7–11 (x64)
+
+> Note: the default build targets Windows 7+. For Windows XP a separate
+> `WINXP` toolchain (v141_xp + Windows SDK 7.1A) is required.
